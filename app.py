@@ -1,3 +1,4 @@
+from asyncio import run_coroutine_threadsafe
 from flask import Flask, flash, redirect, url_for, render_template, request, jsonify
 
 
@@ -9,6 +10,12 @@ email_list = [
 
 ]
 
+check_list = [
+
+]
+
+rounds = 0
+
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -17,18 +24,15 @@ def home():
 def output():
     if request.method == "POST":
         mail = request.form["email"]
-        f = open("list.txt", "r")
-        for x in f:
+        for x in check_list:
             if x.lower() == mail.lower():
                 flash("Błąd! Ten email już jest na liście!")
                 return render_template("index.html")
-            if x != "\n":
-                f = open("list.txt", "a")
-                f.write("\n")
             print(x)
-        f = open("list.txt", "a")
-        f.write(mail)
-        f.close()
+            if x.lower() != mail.lower():
+                print("inny")
+            
+        check_list.append(mail)
         mail = {
             'email': request.form["email"]
         }
