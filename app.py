@@ -26,12 +26,11 @@ def output():
         mail = request.form["email"]
         for x in check_list:
             if x.lower() == mail.lower():
+                print("Podany mail: ", mail)
+                print("Lista maili: ", check_list)
                 flash("Błąd! Ten email już jest na liście!")
                 return render_template("index.html")
-            print(x)
-            if x.lower() != mail.lower():
-                print("inny")
-            
+        
         check_list.append(mail)
         mail = {
             'email': request.form["email"]
