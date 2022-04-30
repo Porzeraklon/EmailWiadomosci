@@ -1,0 +1,23 @@
+<html>
+
+<head>
+
+    <title>Stronka</title>
+
+</head>
+
+
+<body>
+
+    <form action="output" method="post">
+        <p>Email:</p>
+        <p><input type="email" id="email" name="email"></p>
+        <p><input type="submit" value="Przeslij"></p>
+        {% for message in get_flashed_messages()%}
+        <p>{{message}}</p>
+        {% endfor %}
+    </form>
+
+</body>
+
+</html>
