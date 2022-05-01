@@ -30,7 +30,7 @@ def output():
         
         check_list.append(mail)
         mail = {
-            'email': request.form["email"]
+            'email': mail
         }
         email_list.append(mail)
         print(email_list)
