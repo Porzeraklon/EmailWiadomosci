@@ -80,7 +80,7 @@ def send():
     mails = ""
     f = open("check_list.txt", "r")
     for x in f:
-        x = x + "<br>"
+        x = "<p>" + x + "</p>"
         mails = mails + x
     f.close()
     return (mails)
