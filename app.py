@@ -9,12 +9,12 @@ check_list = [
 ]
 
 
-@app.route("/")
+@app.route("/", methods=['POST', 'GET'])
 def home():
-    return render_template("index.html")
-
-@app.route("/output", methods=['POST', 'GET'])
-def output():
+    
+    if request.method == "GET":
+        return render_template("index.html")
+    
     if request.method == "POST":
         
         f = open("check_list.txt", "r")
@@ -24,6 +24,11 @@ def output():
         f.close
 
         mail = request.form["email"]
+
+        if mail == '':
+            flash("Bład! Pole nie może być puste!")
+            return render_template("index.html")
+
         for x in check_list:
             if x != '\n':
                 print(x)
@@ -64,7 +69,7 @@ def output():
     else:
         return render_template("index.html")
 
-    
+
 
 @app.route("/send")
 def emails():

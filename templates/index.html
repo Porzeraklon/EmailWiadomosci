@@ -3,16 +3,22 @@
 <head>
 
     <title>NewsLetter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
 
 </head>
 
 
 <body>
 
-    <form action="output" method="post">
-        <p>Email:</p>
-        <p><input type="email" id="email" name="email"></p>
-        <p><input type="submit" value="Przeslij"></p>
+    <h1>Email Wiadomości</h1>
+    <p id="desc">Email Wiadomości to NewsLetter wysyłający codziennie rano o godzinie 8:00 najnowsze Wiadomości z Polski i świata,<br>
+    dostarczając przy tym informacji takich jak pogoda czy kurs euro i dolara.<br>
+    Zapisz się już dziś i zacznij otrzymywać szybki raport dnia!</p>
+
+    <form action="#" method="post">
+        <p id="email">Email:</p>
+        <p><input type="email" id="elemail" name="email"></p>
+        <p><input type="submit" value="Zapisz!" id="submit"></p>
         {% for message in get_flashed_messages()%}
         <p>{{message}}</p>
         {% endfor %}
