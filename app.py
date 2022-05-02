@@ -39,7 +39,7 @@ def output():
 
         mail = "{email: " + mail + '}'
         f = open("list.txt", "a")
-        f.write(mail + " ")
+        f.write(mail + ",")
         f.close
 
         flash("Sukces! Email został dodany do listy!")
