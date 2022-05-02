@@ -37,7 +37,17 @@ def output():
         f.write('\n')
         f.close()
 
-        mail = "{email: " + mail + '}'
+        f = open("id_list.txt", "r")
+        _id = f.read()
+        f.close()
+
+        f = open("id_list.txt", "w")
+        _id = int(_id) + 1
+        f.write(str(_id))
+        f.close()
+
+        mail = "{'mail_id':'" + str(_id) + "','email':'" + mail + "'}"
+        print(mail)
         f = open("list.txt", "a")
         f.write(mail + ",")
         f.close
