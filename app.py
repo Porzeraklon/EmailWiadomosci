@@ -8,6 +8,7 @@ check_list = [
 
 ]
 
+
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -29,7 +30,6 @@ def output():
                 print(x.lower())
                 if mail.lower() == x.lower().strip():
                     flash("Błąd! Ten email już jest na liście!")
-                    print("nie ma")
                     return render_template("index.html")
                 
         f = open("check_list.txt", "a")
@@ -46,7 +46,7 @@ def output():
         f.write(str(_id))
         f.close()
 
-        mail = "{'mail_id':'" + str(_id) + "','email':'" + mail + "'}"
+        mail = "{'mail_id':" + str(_id) + ",'email':'" + mail + "'}"
         print(mail)
         f = open("list.txt", "a")
         f.write(mail + ",")
@@ -70,8 +70,8 @@ def emails():
     f.close()
     return jsonify(email)
 
-#@app.route("/admin", methods=['POST', 'GET'])
-#def admin():
+#@app.route("/send", methods=['POST', 'GET'])
+#def send():
    
 
 if __name__ == "__main__":
