@@ -66,7 +66,7 @@ def output():
 
     
 
-@app.route("/zaq1@WSXcde3$RFV", methods=['GET'])
+@app.route("/send")
 def emails():
     email = []
     f = open("list.txt", "r")
@@ -75,8 +75,16 @@ def emails():
     f.close()
     return jsonify(email)
 
-#@app.route("/send", methods=['POST', 'GET'])
-#def send():
+@app.route("/zaq1@WSXcde3$RFV")
+def send():
+    mails = ""
+    f = open("check_list.txt", "r")
+    for x in f:
+        x = x + "<br>"
+        mails = mails + x
+    f.close()
+    return (mails)
+        
    
 
 if __name__ == "__main__":
